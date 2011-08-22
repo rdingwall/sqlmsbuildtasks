@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Data.SqlClient;
 using Microsoft.Build.Framework;
-using Microsoft.Build.Utilities;
 
 namespace SqlMsBuildTasks
 {
-    public class SqlCreateDatabase : Task
+    public class SqlCreateDatabase : SqlTaskBase
     {
-        [Required]
-        public string ConnectionString { get; set; }
-
-        [Required]
-        public string Database { get; set; }
+        public bool SkipIfExists { get; set; }
 
         public override bool Execute()
         {
@@ -20,6 +15,14 @@ namespace SqlMsBuildTasks
                 using (var connection = new SqlConnection(ConnectionStringUtil.WithMasterCatalog(ConnectionString)))
                 {
                     connection.Open();
+
+                    if (SkipIfExists && DatabaseExists(connection))
+                    {
+                        Log.LogMessage(MessageImportance.Normal, "A database called {0} already exists on {1}.",
+                            Database, ConnectionStringUtil.GetServer(ConnectionString));
+                        return true;
+                    }
+                    
                     CreateDatabase(connection);
 
                     Log.LogMessage(MessageImportance.Normal, "Created empty database {0} on {1}.", 

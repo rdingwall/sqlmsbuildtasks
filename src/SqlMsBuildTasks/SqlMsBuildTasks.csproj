@@ -42,6 +42,7 @@
     <Compile Include="SqlCreateDatabase.cs" />
     <Compile Include="SqlDropDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlTaskBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SqlMsBuildTasks.targets">

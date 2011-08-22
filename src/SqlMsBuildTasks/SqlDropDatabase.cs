@@ -5,14 +5,8 @@ using Microsoft.Build.Utilities;
 
 namespace SqlMsBuildTasks
 {
-    public class SqlDropDatabase : Task
+    public class SqlDropDatabase : SqlTaskBase
     {
-        [Required]
-        public string ConnectionString { get; set; }
-
-        [Required]
-        public string Database { get; set; }
-
         public override bool Execute()
         {
             try
@@ -64,16 +58,6 @@ namespace SqlMsBuildTasks
                 command.CommandText = String.Format("ALTER DATABASE {0} SET SINGLE_USER WITH ROLLBACK IMMEDIATE;", Database);
                 Log.LogMessage(MessageImportance.Low, command.CommandText);
                 command.ExecuteNonQuery();
-            }
-        }
-
-        bool DatabaseExists(SqlConnection connection)
-        {
-            using (var command = connection.CreateCommand())
-            {
-                command.CommandText = String.Format("SELECT COUNT(1) FROM SYS.DATABASES WHERE name = '{0}'", Database);
-                Log.LogMessage(MessageImportance.Low, command.CommandText);
-                return (int)command.ExecuteScalar() > 0;
             }
         }
     }
