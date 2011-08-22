@@ -1,7 +1,7 @@
 SQL Server MS Build Tasks
 =========================
 
-A couple of extra MSBuild tasks for SQL Server scripting.
+A couple of handy MSBuild tasks for SQL Server scripting. Works with .NET 2.0+.
 
 ### Examples
 
