@@ -1,7 +1,9 @@
 SQL Server MS Build Tasks
 =========================
 
-A couple of extra MSBuild tasks for assisting with SQL Server deployment.
+A couple of extra MSBuild tasks for SQL Server scripting.
+
+### Examples
 
 Dropping a database:
 
