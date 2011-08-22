@@ -2,13 +2,14 @@
 
   <PropertyGroup>
     <SqlMsBuildTasksPath>..\build</SqlMsBuildTasksPath>
+    <MyConnectionString>Server=.\SQLEXPRESS;Database=Test;Integrated Security=SSPI;</MyConnectionString>
   </PropertyGroup>
 
   <Import Project="..\build\SqlMsBuildTasks.targets" />
 
   <Target Name="ParseTest">
 
-    <SqlParseConnectionString ConnectionString="Server=.\SQLEXPRESS;Database=Test;Integrated Security=SSPI;">
+    <SqlParseConnectionString ConnectionString="$(MyConnectionString)">
       <Output PropertyName="myDb" TaskParameter="InitialCatalog" />
       <Output PropertyName="myServer" TaskParameter="DataSource" />
       <Output PropertyName="myTimeout" TaskParameter="ConnectTimeout" />
@@ -17,16 +18,9 @@
   </Target>
 
   <Target Name="DropAndCreateTest">
-    <SqlDropDatabase ConnectionString="Server=.\SQLEXPRESS;Database=Test;Integrated Security=SSPI;"
-                     Database="Test" />
-
-    <SqlCreateDatabase ConnectionString="Server=.\SQLEXPRESS;Database=master;Integrated Security=SSPI;"
-                     Database="Test" />
-
-    <SqlCreateDatabase ConnectionString="Server=.\SQLEXPRESS;Database=master;Integrated Security=SSPI;"
-                     Database="Test" ContinueOnError="True" />
-
-    <SqlDropDatabase ConnectionString="Server=.\SQLEXPRESS;Database=Test;Integrated Security=SSPI;"
-                     Database="Test" />
+    <SqlDropDatabase ConnectionString="$(MyConnectionString)" Database="Test" />
+    <SqlCreateDatabase ConnectionString="$(MyConnectionString)" Database="Test" />
+    <SqlCreateDatabase ConnectionString="$(MyConnectionString)" Database="Test" ContinueOnError="True" />
+    <SqlDropDatabase ConnectionString="$(MyConnectionString)" Database="Test" />
   </Target>
 </Project>
