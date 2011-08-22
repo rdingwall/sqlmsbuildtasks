@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System;
-using System.Data.SqlClient;
-using Microsoft.Build.Framework;
-
 namespace SqlMsBuildTasks
 {
+    using System;
+    using System.Data.SqlClient;
+    using Microsoft.Build.Framework;
+
     /// <summary>
     /// MSBuild task to drop a SQL Server database.
     /// </summary>
@@ -41,6 +41,12 @@ namespace SqlMsBuildTasks
     /// </example>
     public class SqlDropDatabase : SqlTaskBase
     {
+        /// <summary>
+        /// The name of the database to drop.
+        /// </summary>
+        [Required]
+        public string Database { get; set; }
+
         public override bool Execute()
         {
             try
@@ -51,8 +57,7 @@ namespace SqlMsBuildTasks
 
                     if (!DatabaseExists(connection, Database))
                     {
-                        Log.LogMessage(MessageImportance.Normal, "Could not find any database called {0} on {1}.", 
-                            Database, GetServerName());
+                        Log.LogMessage(MessageImportance.Normal, "Could not find any database called {0} on {1}.", Database, GetServerName());
                         return true;
                     }
 
@@ -60,7 +65,6 @@ namespace SqlMsBuildTasks
                     DropDatabase(connection);
 
                     Log.LogMessage(MessageImportance.Normal, "Dropped database {0} on {1}.", Database, GetServerName());
-
                     return true;
                 }
             }
@@ -70,8 +74,6 @@ namespace SqlMsBuildTasks
                 return false;
             }
         }
-
-
 
         void DropDatabase(SqlConnection connection)
         {
@@ -92,8 +94,5 @@ namespace SqlMsBuildTasks
                 command.ExecuteNonQuery();
             }
         }
-
-        [Required]
-        public string Database { get; set; }
     }
 }

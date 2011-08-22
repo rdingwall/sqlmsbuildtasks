@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System;
-using System.Data.SqlClient;
-using Microsoft.Build.Framework;
-
 namespace SqlMsBuildTasks
 {
+    using System;
+    using System.Data.SqlClient;
+    using Microsoft.Build.Framework;
+
     /// <summary>
     /// MSBuild task to parse individual keys out of a SQL Server connection string.
     /// </summary>

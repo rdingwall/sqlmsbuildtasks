@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System;
-using System.Data.SqlClient;
-using Microsoft.Build.Framework;
-
 namespace SqlMsBuildTasks
 {
+    using System;
+    using System.Data.SqlClient;
+    using Microsoft.Build.Framework;
+
     /// <summary>
     /// MSBuild task to create a SQL Server database.
     /// </summary>
@@ -43,6 +43,9 @@ namespace SqlMsBuildTasks
     /// </example>
     public class SqlCreateDatabase : SqlTaskBase
     {
+        /// <summary>
+        /// The name of the database to create.
+        /// </summary>
         [Required]
         public string Database { get; set; }
 
@@ -53,12 +56,10 @@ namespace SqlMsBuildTasks
                 using (var connection = new SqlConnection(GetMasterCatalogConnectionString()))
                 {
                     connection.Open();
-                    
+
                     CreateDatabase(connection);
 
-                    Log.LogMessage(MessageImportance.Normal, "Created empty database {0} on {1}.", 
-                        Database, GetServerName());
-
+                    Log.LogMessage(MessageImportance.Normal, "Created empty database {0} on {1}.", Database, GetServerName());
                     return true;
                 }
             }

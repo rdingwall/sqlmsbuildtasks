@@ -12,15 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System;
-using System.Data.SqlClient;
-using Microsoft.Build.Framework;
-using Microsoft.Build.Utilities;
-
 namespace SqlMsBuildTasks
 {
+    using System;
+    using System.Data.SqlClient;
+    using Microsoft.Build.Framework;
+    using Microsoft.Build.Utilities;
+
     public abstract class SqlTaskBase : Task
     {
+        /// <summary>
+        /// The connection string to use when connecting to the database.
+        /// </summary>
         [Required]
         public string ConnectionString { get; set; }
 
