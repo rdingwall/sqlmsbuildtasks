@@ -22,5 +22,16 @@ namespace SqlMsBuildTasks
                 return (int)command.ExecuteScalar() > 0;
             }
         }
+
+        protected string GetMasterCatalogConnectionString()
+        {
+            var builder = new SqlConnectionStringBuilder(ConnectionString) { InitialCatalog = "master" };
+            return builder.ConnectionString;
+        }
+
+        protected string GetServerName()
+        {
+            return new SqlConnectionStringBuilder(ConnectionString).DataSource;
+        }
     }
 }

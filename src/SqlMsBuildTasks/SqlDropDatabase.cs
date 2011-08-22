@@ -11,23 +11,21 @@ namespace SqlMsBuildTasks
         {
             try
             {
-                using (var connection = new SqlConnection(ConnectionStringUtil.WithMasterCatalog(ConnectionString)))
+                using (var connection = new SqlConnection(GetMasterCatalogConnectionString()))
                 {
                     connection.Open();
-
-                    var server = ConnectionStringUtil.GetServer(ConnectionString);
 
                     if (!DatabaseExists(connection))
                     {
                         Log.LogMessage(MessageImportance.Normal, "Could not find any database called {0} on {1}.", 
-                            Database, server);
+                            Database, GetServerName());
                         return true;
                     }
 
                     KickUsers(connection);
                     DropDatabase(connection);
 
-                    Log.LogMessage(MessageImportance.Normal, "Dropped database {0} on {1}.", Database, server);
+                    Log.LogMessage(MessageImportance.Normal, "Dropped database {0} on {1}.", Database, GetServerName());
 
                     return true;
                 }

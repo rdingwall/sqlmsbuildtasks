@@ -12,21 +12,21 @@ namespace SqlMsBuildTasks
         {
             try
             {
-                using (var connection = new SqlConnection(ConnectionStringUtil.WithMasterCatalog(ConnectionString)))
+                using (var connection = new SqlConnection(GetMasterCatalogConnectionString()))
                 {
                     connection.Open();
 
                     if (SkipIfExists && DatabaseExists(connection))
                     {
                         Log.LogMessage(MessageImportance.Normal, "A database called {0} already exists on {1}.",
-                            Database, ConnectionStringUtil.GetServer(ConnectionString));
+                            Database, GetServerName());
                         return true;
                     }
                     
                     CreateDatabase(connection);
 
                     Log.LogMessage(MessageImportance.Normal, "Created empty database {0} on {1}.", 
-                        Database, ConnectionStringUtil.GetServer(ConnectionString));
+                        Database, GetServerName());
 
                     return true;
                 }
