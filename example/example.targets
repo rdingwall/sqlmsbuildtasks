@@ -21,10 +21,10 @@
                      Database="Test" />
 
     <SqlCreateDatabase ConnectionString="Server=.\SQLEXPRESS;Database=master;Integrated Security=SSPI;"
-                     Database="Test" SkipIfExists="True" />
+                     Database="Test" />
 
     <SqlCreateDatabase ConnectionString="Server=.\SQLEXPRESS;Database=master;Integrated Security=SSPI;"
-                     Database="Test" SkipIfExists="True" />
+                     Database="Test" ContinueOnError="True" />
 
     <SqlDropDatabase ConnectionString="Server=.\SQLEXPRESS;Database=Test;Integrated Security=SSPI;"
                      Database="Test" />

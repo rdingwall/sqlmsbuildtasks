@@ -43,8 +43,6 @@ namespace SqlMsBuildTasks
     /// </example>
     public class SqlCreateDatabase : SqlTaskBase
     {
-        public bool SkipIfExists { get; set; }
-
         [Required]
         public string Database { get; set; }
 
@@ -55,13 +53,6 @@ namespace SqlMsBuildTasks
                 using (var connection = new SqlConnection(GetMasterCatalogConnectionString()))
                 {
                     connection.Open();
-
-                    if (SkipIfExists && DatabaseExists(connection, Database))
-                    {
-                        Log.LogMessage(MessageImportance.Normal, "A database called {0} already exists on {1}.",
-                            Database, GetServerName());
-                        return true;
-                    }
                     
                     CreateDatabase(connection);
 
