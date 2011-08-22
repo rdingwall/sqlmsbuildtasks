@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlMsBuildTasks", "SqlMsBuildTasks\SqlMsBuildTasks.csproj", "{13105EEC-7A5D-4299-9BFB-160A133BC56C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlMsBuildTasks", "src\SqlMsBuildTasks\SqlMsBuildTasks.csproj", "{13105EEC-7A5D-4299-9BFB-160A133BC56C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
