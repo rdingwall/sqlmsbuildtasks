@@ -17,19 +17,24 @@ namespace SqlMsBuildTasks
         {
             try
             {
-                using (var connection = new SqlConnection(GetMasterCatalogConnectionString()))
+                using (var connection = new SqlConnection(ConnectionStringUtil.WithMasterCatalog(ConnectionString)))
                 {
                     connection.Open();
 
+                    var server = ConnectionStringUtil.GetServer(ConnectionString);
+
                     if (!DatabaseExists(connection))
                     {
-                        Log.LogMessage(MessageImportance.Normal, "Could not find any database called {0} on {1}.", Database, GetServer());
+                        Log.LogMessage(MessageImportance.Normal, "Could not find any database called {0} on {1}.", 
+                            Database, server);
                         return true;
                     }
 
                     KickUsers(connection);
                     DropDatabase(connection);
-                    Log.LogMessage(MessageImportance.Normal, "Dropped database {0} on {1}.", Database, GetServer());
+
+                    Log.LogMessage(MessageImportance.Normal, "Dropped database {0} on {1}.", Database, server);
+
                     return true;
                 }
             }
@@ -70,17 +75,6 @@ namespace SqlMsBuildTasks
                 Log.LogMessage(MessageImportance.Low, command.CommandText);
                 return (int)command.ExecuteScalar() > 0;
             }
-        }
-
-        string GetMasterCatalogConnectionString()
-        {
-            var builder = new SqlConnectionStringBuilder(ConnectionString) {InitialCatalog = "master"};
-            return builder.ConnectionString;
-        }
-
-        string GetServer()
-        {
-            return new SqlConnectionStringBuilder(ConnectionString).DataSource;
         }
     }
 }

@@ -3,9 +3,16 @@
   <PropertyGroup>
     <SqlMsBuildTasksPath>..\build</SqlMsBuildTasksPath>
   </PropertyGroup>
-  
+
   <Import Project="..\build\SqlMsBuildTasks.targets" />
-  <Target Name="Drop">
+
+  <Target Name="example">
+    <SqlDropDatabase ConnectionString="Server=.\SQLEXPRESS;Database=Test;Integrated Security=SSPI;"
+                     Database="Test" />
+
+    <SqlCreateDatabase ConnectionString="Server=.\SQLEXPRESS;Database=master;Integrated Security=SSPI;"
+                     Database="Test" />
+
     <SqlDropDatabase ConnectionString="Server=.\SQLEXPRESS;Database=Test;Integrated Security=SSPI;"
                      Database="Test" />
   </Target>

@@ -6,8 +6,9 @@
   </PropertyGroup>
 
   <UsingTask AssemblyFile="$(SqlMsBuildTasksLib)" TaskName="SqlMsBuildTasks.SqlDropDatabase" />
+  <UsingTask AssemblyFile="$(SqlMsBuildTasksLib)" TaskName="SqlMsBuildTasks.SqlCreateDatabase" />
   <!--
-  <UsingTask AssemblyFile="$(SqlMsBuildTasksLib)" TaskName="SqlMsBuildTasks.SqlDropDatabase" />
+  
   <UsingTask AssemblyFile="$(SqlMsBuildTasksLib)" TaskName="SqlMsBuildTasks.SqlDropDatabase" />
   -->
   
