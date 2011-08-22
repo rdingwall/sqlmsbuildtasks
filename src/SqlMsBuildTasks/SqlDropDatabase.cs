@@ -17,17 +17,19 @@ namespace SqlMsBuildTasks
         {
             try
             {
-                using (var connection = new SqlConnection(ConnectionString))
+                using (var connection = new SqlConnection(GetMasterCatalogConnectionString()))
                 {
+                    connection.Open();
+
                     if (!DatabaseExists(connection))
                     {
-                        Log.LogMessage(MessageImportance.Normal, "Database '{0}' was already dropped.", Database);
+                        Log.LogMessage(MessageImportance.Normal, "Could not find any database called {0} on {1}.", Database, GetServer());
                         return true;
                     }
 
                     KickUsers(connection);
                     DropDatabase(connection);
-                    Log.LogMessage(MessageImportance.Normal, "Dropped database '{0}'.", Database);
+                    Log.LogMessage(MessageImportance.Normal, "Dropped database {0} on {1}.", Database, GetServer());
                     return true;
                 }
             }
@@ -38,7 +40,9 @@ namespace SqlMsBuildTasks
             }
         }
 
-        private void DropDatabase(SqlConnection connection)
+
+
+        void DropDatabase(SqlConnection connection)
         {
             using (var command = connection.CreateCommand())
             {
@@ -48,7 +52,7 @@ namespace SqlMsBuildTasks
             }
         }
 
-        private void KickUsers(SqlConnection connection)
+        void KickUsers(SqlConnection connection)
         {
             using (var command = connection.CreateCommand())
             {
@@ -66,6 +70,17 @@ namespace SqlMsBuildTasks
                 Log.LogMessage(MessageImportance.Low, command.CommandText);
                 return (int)command.ExecuteScalar() > 0;
             }
+        }
+
+        string GetMasterCatalogConnectionString()
+        {
+            var builder = new SqlConnectionStringBuilder(ConnectionString) {InitialCatalog = "master"};
+            return builder.ConnectionString;
+        }
+
+        string GetServer()
+        {
+            return new SqlConnectionStringBuilder(ConnectionString).DataSource;
         }
     }
 }

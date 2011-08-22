@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SqlMsBuildTasksPath Condition="'$(SqlMsBuildTasksPath)' == ''">$(MSBuildExtensionsPath)\SqlMsBuildTasks</SqlMsBuildTasksPath>
+    <SqlMsBuildTasksLib>$(SqlMsBuildTasksPath)\SqlMsBuildTasks.dll</SqlMsBuildTasksLib>
+  </PropertyGroup>
+
+  <UsingTask AssemblyFile="$(SqlMsBuildTasksLib)" TaskName="SqlMsBuildTasks.SqlDropDatabase" />
+  <!--
+  <UsingTask AssemblyFile="$(SqlMsBuildTasksLib)" TaskName="SqlMsBuildTasks.SqlDropDatabase" />
+  <UsingTask AssemblyFile="$(SqlMsBuildTasksLib)" TaskName="SqlMsBuildTasks.SqlDropDatabase" />
+  -->
+  
+</Project>

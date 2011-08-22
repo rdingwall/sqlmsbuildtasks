@@ -1,0 +1,12 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <SqlMsBuildTasksPath>..\build</SqlMsBuildTasksPath>
+  </PropertyGroup>
+  
+  <Import Project="..\build\SqlMsBuildTasks.targets" />
+  <Target Name="Drop">
+    <SqlDropDatabase ConnectionString="Server=.\SQLEXPRESS;Database=Test;Integrated Security=SSPI;"
+                     Database="Test" />
+  </Target>
+</Project>
