@@ -38,6 +38,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SqlParseConnectionString.cs" />
     <Compile Include="SqlCreateDatabase.cs" />
     <Compile Include="SqlDropDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

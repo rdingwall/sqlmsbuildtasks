@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
 using Microsoft.Build.Framework;
-using Microsoft.Build.Utilities;
 
 namespace SqlMsBuildTasks
 {
@@ -15,7 +14,7 @@ namespace SqlMsBuildTasks
                 {
                     connection.Open();
 
-                    if (!DatabaseExists(connection))
+                    if (!DatabaseExists(connection, Database))
                     {
                         Log.LogMessage(MessageImportance.Normal, "Could not find any database called {0} on {1}.", 
                             Database, GetServerName());
@@ -58,5 +57,8 @@ namespace SqlMsBuildTasks
                 command.ExecuteNonQuery();
             }
         }
+
+        [Required]
+        public string Database { get; set; }
     }
 }

@@ -8,6 +8,9 @@ namespace SqlMsBuildTasks
     {
         public bool SkipIfExists { get; set; }
 
+        [Required]
+        public string Database { get; set; }
+
         public override bool Execute()
         {
             try
@@ -16,7 +19,7 @@ namespace SqlMsBuildTasks
                 {
                     connection.Open();
 
-                    if (SkipIfExists && DatabaseExists(connection))
+                    if (SkipIfExists && DatabaseExists(connection, Database))
                     {
                         Log.LogMessage(MessageImportance.Normal, "A database called {0} already exists on {1}.",
                             Database, GetServerName());

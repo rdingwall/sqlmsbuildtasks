@@ -10,14 +10,14 @@ namespace SqlMsBuildTasks
         [Required]
         public string ConnectionString { get; set; }
 
-        [Required]
-        public string Database { get; set; }
-
-        protected bool DatabaseExists(SqlConnection connection)
+        protected bool DatabaseExists(SqlConnection connection, string database)
         {
+            if (connection == null) throw new ArgumentNullException("connection");
+            if (database == null) throw new ArgumentNullException("database");
+
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = String.Format("SELECT COUNT(1) FROM SYS.DATABASES WHERE name = '{0}'", Database);
+                command.CommandText = String.Format("SELECT COUNT(1) FROM SYS.DATABASES WHERE name = '{0}'", database);
                 Log.LogMessage(MessageImportance.Low, command.CommandText);
                 return (int)command.ExecuteScalar() > 0;
             }
