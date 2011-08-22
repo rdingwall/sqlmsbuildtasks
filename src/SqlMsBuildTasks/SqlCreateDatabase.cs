@@ -4,6 +4,29 @@ using Microsoft.Build.Framework;
 
 namespace SqlMsBuildTasks
 {
+    /// <summary>
+    /// MSBuild task to create a SQL Server database.
+    /// </summary>
+    /// <remarks>
+    /// The provided ConnectionString's Initial Catalog/Database is set to 
+    /// 'master', so you can use the same connection string as the database 
+    /// you are creating.
+    /// 
+    /// If the database already exists, an error will be throw. Set SkipIfExists
+    /// = true will disable this error (the task will simply return successfully
+    /// if the database is found to already exist).
+    /// </remarks>
+    /// <example>
+    /// <code><![CDATA[
+    /// <PropertyGroup>
+    ///		<ConnectionString>Server=localhost;Integrated Security=True</ConnectionString>
+    ///	</PropertyGroup>
+    ///
+    /// <Target Name="Drop">
+    ///		<SqlCreateDatabase ConnectionString="$(ConnectionString)" Database="Northwind" />
+    /// </Target>
+    /// ]]></code>
+    /// </example>
     public class SqlCreateDatabase : SqlTaskBase
     {
         public bool SkipIfExists { get; set; }

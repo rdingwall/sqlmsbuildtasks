@@ -4,6 +4,27 @@ using Microsoft.Build.Framework;
 
 namespace SqlMsBuildTasks
 {
+    /// <summary>
+    /// MSBuild task to drop a SQL Server database.
+    /// </summary>
+    /// <remarks>
+    /// The provided ConnectionString's Initial Catalog/Database is set to 
+    /// 'master', so you can use the same connection string as the database 
+    /// you are dropping. 
+    /// 
+    /// This task returns successfully if the database cannot be found.
+    /// </remarks>
+    /// <example>
+    /// <code><![CDATA[
+    /// <PropertyGroup>
+    ///		<ConnectionString>Server=localhost;Integrated Security=True</ConnectionString>
+    ///	</PropertyGroup>
+    ///
+    /// <Target Name="Drop">
+    ///		<SqlDropDatabase ConnectionString="$(ConnectionString)" Database="Northwind" />
+    /// </Target>
+    /// ]]></code>
+    /// </example>
     public class SqlDropDatabase : SqlTaskBase
     {
         public override bool Execute()

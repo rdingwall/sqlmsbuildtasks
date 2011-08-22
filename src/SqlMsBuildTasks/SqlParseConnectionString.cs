@@ -4,6 +4,28 @@ using Microsoft.Build.Framework;
 
 namespace SqlMsBuildTasks
 {
+    /// <summary>
+    /// MSBuild task to parse individual keys out of a SQL Server connection string.
+    /// </summary>
+    /// <remarks>
+    /// You can use all the properties exposed on <see 
+    /// cref="System.Data.SqlClient.SqlConnectionStringBuilder" />.
+    /// </remarks>
+    /// <example>
+    /// <code><![CDATA[
+    /// <PropertyGroup>
+    ///		<ConnectionString>Server=localhost;Database=NorthWind;Integrated Security=True</ConnectionString>
+    ///	</PropertyGroup>
+    ///
+    ///	<SqlParseConnectionString ConnectionString="$(ConnectionString)">
+    ///      <Output PropertyName="myDb" TaskParameter="InitialCatalog" />
+    ///      <Output PropertyName="myServer" TaskParameter="DataSource" />
+    ///      <Output PropertyName="myTimeout" TaskParameter="ConnectTimeout" />
+    /// </SqlParseConnectionString>
+    /// <Message Text="Parsed the $(myDb) database on server $(myServer) with timeout = $(myTimeout)." />
+    /// </Target>
+    /// ]]></code>
+    /// </example>
     public class SqlParseConnectionString : SqlTaskBase
     {
         [Output]
