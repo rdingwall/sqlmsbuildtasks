@@ -79,7 +79,7 @@ namespace SqlMsBuildTasks
         {
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = String.Format("DROP DATABASE {0};", Database);
+                command.CommandText = String.Format("DROP DATABASE [{0}];", Database);
                 Log.LogMessage(MessageImportance.Low, command.CommandText);
                 command.ExecuteNonQuery();
             }
@@ -89,7 +89,7 @@ namespace SqlMsBuildTasks
         {
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = String.Format("ALTER DATABASE {0} SET SINGLE_USER WITH ROLLBACK IMMEDIATE;", Database);
+                command.CommandText = String.Format("ALTER DATABASE [{0}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;", Database);
                 Log.LogMessage(MessageImportance.Low, command.CommandText);
                 command.ExecuteNonQuery();
             }

@@ -74,7 +74,7 @@ namespace SqlMsBuildTasks
         {
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = String.Format("CREATE DATABASE {0};", Database);
+                command.CommandText = String.Format("CREATE DATABASE [{0}];", Database);
                 Log.LogMessage(MessageImportance.Low, command.CommandText);
                 command.ExecuteNonQuery();
             }
