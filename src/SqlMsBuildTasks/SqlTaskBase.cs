@@ -34,7 +34,7 @@ namespace SqlMsBuildTasks
 
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = String.Format("SELECT COUNT(1) FROM SYS.DATABASES WHERE name = '{0}'", database);
+                command.CommandText = String.Format("SELECT COUNT(1) FROM sys.databases WHERE name = '{0}'", database);
                 Log.LogMessage(MessageImportance.Low, command.CommandText);
                 return (int)command.ExecuteScalar() > 0;
             }
