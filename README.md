@@ -7,6 +7,7 @@ A couple of handy MSBuild tasks for SQL Server scripting. Works with .NET 2.0+. 
 
 The latest SqlMsBuildTasks is **now available in NuGet [here](http://nuget.org/List/Packages/sqlmsbuildtasks)**, or as a zip from the downloads page.
 
+Contributions and new ideas are welcome!
 
 ## SqlDropDatabase
 MSBuild task to drop a SQL Server database.
@@ -86,3 +87,8 @@ The task uses [SqlConnectionStringBuilder](http://msdn.microsoft.com/en-us/libra
 * ``WorkstationID``
 
 See [MSDN](http://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx) for a detailed description of the purpose of each of these keys.
+
+# Release History / Changelog
+1.0.0.0 - August 11 2012
+
+* Initial release on NuGet.
