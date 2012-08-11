@@ -1,36 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="SqlMSBuildTasks : A couple of extra MSBuild tasks for SQL Server scripting." />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>SqlMSBuildTasks by rdingwall</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>SqlMSBuildTasks</title>
   </head>
-
   <body>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/rdingwall/sqlmsbuildtasks">View on GitHub</a>
+      <header>
+        <h1>SqlMSBuildTasks</h1>
+        <p>A couple of extra MSBuild tasks for SQL Server scripting.</p>
+      </header>
 
-          <h1 id="project_title">SqlMSBuildTasks</h1>
-          <h2 id="project_tagline">A couple of extra MSBuild tasks for SQL Server scripting.</h2>
+      <div id="banner">
+        <span id="logo"></span>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/rdingwall/sqlmsbuildtasks/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/rdingwall/sqlmsbuildtasks/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+        <a href="https://github.com/rdingwall/sqlmsbuildtasks" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/rdingwall/sqlmsbuildtasks/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/rdingwall/sqlmsbuildtasks/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
         <h1>SQL Server MS Build Tasks</h1>
 
 <p>A couple of handy MSBuild tasks for SQL Server scripting. Works with .NET 2.0+. Available under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>.</p>
@@ -99,17 +107,17 @@
 
 <ul>
 <li>
-<code>DataSource</code> </li>
+<code>DataSource</code> (aka <code>server</code>, <code>address</code>, <code>addr</code>, <code>network address</code>)</li>
 <li>
-<code>InitialCatalog</code> </li>
+<code>InitialCatalog</code> (aka <code>database</code>)</li>
 <li>
-<code>ApplicationName</code> </li>
+<code>ApplicationName</code> (aka <code>app</code>)</li>
 <li>
 <code>AsynchronousProcessing</code> </li>
 <li>
 <code>AttachDBFilename</code> </li>
 <li>
-<code>ConnectTimeout</code> </li>
+<code>ConnectTimeout</code> (aka <code>timeout</code>)</li>
 <li>
 <code>ContextConnection</code> </li>
 <li>
@@ -135,7 +143,7 @@
 <li>
 <code>PacketSize</code> </li>
 <li>
-<code>Password</code> </li>
+<code>Password</code> (aka <code>pwd</code>)</li>
 <li>
 <code>PersistSecurityInfo</code> </li>
 <li>
@@ -149,23 +157,18 @@
 <li>
 <code>TypeSystemVersion</code> </li>
 <li>
-<code>UserID</code> </li>
+<code>UserID</code> (aka <code>User ID</code>, <code>uid</code>, <code>user</code>)</li>
 <li>
 <code>UserInstance</code> </li>
 <li><code>WorkstationID</code></li>
 </ul><p>See <a href="http://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx">MSDN</a> for a detailed description of the purpose of each of these keys.</p>
       </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">SqlMSBuildTasks maintained by <a href="https://github.com/rdingwall">rdingwall</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/rdingwall">rdingwall</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
       </footer>
     </div>
-
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
-
   </body>
 </html>
