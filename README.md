@@ -3,6 +3,11 @@ SQL Server MS Build Tasks
 
 A couple of handy MSBuild tasks for SQL Server scripting. Works with .NET 2.0+. Available under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
+### [>>> Get SqlMsBuildTasks via NuGet](http://nuget.org/List/Packages/sqlmsbuildtasks)
+
+The latest SqlMsBuildTasks is **now available in NuGet [here](http://nuget.org/List/Packages/sqlmsbuildtasks)**, or as a zip from the downloads page.
+
+
 ## SqlDropDatabase
 MSBuild task to drop a SQL Server database.
 
