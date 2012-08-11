@@ -88,7 +88,7 @@ The task uses [SqlConnectionStringBuilder](http://msdn.microsoft.com/en-us/libra
 
 See [MSDN](http://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx) for a detailed description of the purpose of each of these keys.
 
-# Referencing the tasks from your MSBuild script
+# Importing the tasks
 To use the tasks below, you will need to include a reference to the SqlMsBuildTasks.targets file in your MSBuild script:
 
 ```xml
