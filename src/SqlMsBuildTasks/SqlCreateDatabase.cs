@@ -26,9 +26,7 @@ namespace SqlMsBuildTasks
     /// 'master', so you can use the same connection string as the database 
     /// you are creating.
     /// 
-    /// If the database already exists, an error will be throw. Set SkipIfExists
-    /// = true will disable this error (the task will simply return successfully
-    /// if the database is found to already exist).
+    /// If the database already exists, an error will be throw. 
     /// </remarks>
     /// <example>
     /// <code><![CDATA[
