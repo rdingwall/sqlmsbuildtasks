@@ -51,12 +51,12 @@ Parsing the server and database name out of a SQL connection string:
 #### Task Output Paramters:
 The task uses [SqlConnectionStringBuilder](http://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx) internally and can parse any key it supports:
 
-* ``DataSource`` 
-* ``InitialCatalog`` 
-* ``ApplicationName`` 
+* ``DataSource`` (aka ``server``, ``address``, ``addr``, ``network address``)
+* ``InitialCatalog`` (aka ``database``)
+* ``ApplicationName`` (aka ``app``)
 * ``AsynchronousProcessing`` 
 * ``AttachDBFilename`` 
-* ``ConnectTimeout`` 
+* ``ConnectTimeout`` (aka ``timeout``)
 * ``ContextConnection`` 
 * ``CurrentLanguage`` 
 * ``Encrypt`` 
@@ -69,14 +69,14 @@ The task uses [SqlConnectionStringBuilder](http://msdn.microsoft.com/en-us/libra
 * ``MultipleActiveResultSets`` 
 * ``NetworkLibrary`` 
 * ``PacketSize`` 
-* ``Password`` 
+* ``Password`` (aka ``pwd``)
 * ``PersistSecurityInfo`` 
 * ``Pooling`` 
 * ``Replication`` 
 * ``TransactionBinding`` 
 * ``TrustServerCertificate`` 
 * ``TypeSystemVersion`` 
-* ``UserID`` 
+* ``UserID`` (aka ``User ID``, ``uid``, ``user``)
 * ``UserInstance`` 
 * ``WorkstationID``
 
