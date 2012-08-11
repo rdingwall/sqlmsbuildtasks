@@ -31,32 +31,129 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>Welcome to GitHub Pages.</h3>
+        <h1>SQL Server MS Build Tasks</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>A couple of handy MSBuild tasks for SQL Server scripting. Works with .NET 2.0+. Available under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<h2>SqlDropDatabase</h2>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>MSBuild task to drop a SQL Server database.</p>
 
-<h3>Designer Templates</h3>
+<h4>Usage Example:</h4>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>To drop the <em>AdventureWorks</em> database in a local SQL Server Express instance (using Windows Authentication):</p>
 
-<h3>Rather Drive Stick?</h3>
+<div class="highlight"><pre><span class="nt">&lt;SqlDropDatabase</span> <span class="na">ConnectionString=</span><span class="s">"Server=.\SQLEXPRESS;Database=AdventureWorks;Integrated Security=SSPI;"</span>
+                 <span class="na">Database=</span><span class="s">"AdventureWorks"</span> <span class="nt">/&gt;</span>
+</pre></div>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<h4>Task Parameters:</h4>
 
-<h3>Authors and Contributors</h3>
+<ul>
+<li>
+<code>Database</code>: name of the database to be dropped.</li>
+<li>
+<code>ConnectionString</code>: the connection string to use. Note any InitialCatalog will be ignored -- this task always uses the <code>master</code> database.</li>
+</ul><h2>SqlCreateDatabase</h2>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>MSBuild task to create a SQL Server database.</p>
 
-<h3>Support or Contact</h3>
+<h4>Usage Example:</h4>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>To create an empty database called <em>AdventureWorks</em> in the local SQL Server Express instance (using Windows Authentication):</p>
+
+<div class="highlight"><pre><span class="nt">&lt;SqlCreateDatabase</span> <span class="na">ConnectionString=</span><span class="s">"Server=.\SQLEXPRESS;Database=AdventureWorks;Integrated Security=SSPI;"</span>
+                   <span class="na">Database=</span><span class="s">"AdventureWorks"</span> <span class="nt">/&gt;</span>
+</pre></div>
+
+<h4>Task Parameters:</h4>
+
+<ul>
+<li>
+<code>Database</code>: name of the database to be created.</li>
+<li>
+<code>ConnectionString</code>: the connection string to use. Note any InitialCatalog will be ignored -- this task always uses the <code>master</code> database.</li>
+</ul><h2>SqlParseConnectionString</h2>
+
+<p>MSBuild task to parse individual keys (e.g. server or port) out of a SQL Server connection string into separate properties. Parsed values can be read via <a href="http://msdn.microsoft.com/en-us/library/ms164287.aspx">MSBuild Output Paramters</a>.</p>
+
+<h4>Usage Example:</h4>
+
+<p>Parsing the server and database name out of a SQL connection string:</p>
+
+<div class="highlight"><pre><span class="nt">&lt;SqlParseConnectionString</span> <span class="na">ConnectionString=</span><span class="s">"Server=.\SQLEXPRESS;Database=AdventureWorks;Integrated Security=SSPI;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Output</span> <span class="na">PropertyName=</span><span class="s">"myDb"</span> <span class="na">TaskParameter=</span><span class="s">"InitialCatalog"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;Output</span> <span class="na">PropertyName=</span><span class="s">"myServer"</span> <span class="na">TaskParameter=</span><span class="s">"DataSource"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/SqlParseConnectionString&gt;</span>
+<span class="nt">&lt;Message</span> <span class="na">Text=</span><span class="s">"Parsed the $(myDb) database on server $(myServer)"</span> <span class="nt">/&gt;</span>
+</pre></div>
+
+<h4>Task Parameters:</h4>
+
+<ul>
+<li>
+<code>ConnectionString</code>: the connection string to parse.</li>
+</ul><h4>Task Output Paramters:</h4>
+
+<p>The task uses <a href="http://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx">SqlConnectionStringBuilder</a> internally and can parse any key it supports:</p>
+
+<ul>
+<li>
+<code>DataSource</code> </li>
+<li>
+<code>InitialCatalog</code> </li>
+<li>
+<code>ApplicationName</code> </li>
+<li>
+<code>AsynchronousProcessing</code> </li>
+<li>
+<code>AttachDBFilename</code> </li>
+<li>
+<code>ConnectTimeout</code> </li>
+<li>
+<code>ContextConnection</code> </li>
+<li>
+<code>CurrentLanguage</code> </li>
+<li>
+<code>Encrypt</code> </li>
+<li>
+<code>Enlist</code> </li>
+<li>
+<code>FailoverPartner</code> </li>
+<li>
+<code>IntegratedSecurity</code> </li>
+<li>
+<code>LoadBalanceTimeout</code> </li>
+<li>
+<code>MaxPoolSize</code> </li>
+<li>
+<code>MinPoolSize</code> </li>
+<li>
+<code>MultipleActiveResultSets</code> </li>
+<li>
+<code>NetworkLibrary</code> </li>
+<li>
+<code>PacketSize</code> </li>
+<li>
+<code>Password</code> </li>
+<li>
+<code>PersistSecurityInfo</code> </li>
+<li>
+<code>Pooling</code> </li>
+<li>
+<code>Replication</code> </li>
+<li>
+<code>TransactionBinding</code> </li>
+<li>
+<code>TrustServerCertificate</code> </li>
+<li>
+<code>TypeSystemVersion</code> </li>
+<li>
+<code>UserID</code> </li>
+<li>
+<code>UserInstance</code> </li>
+<li><code>WorkstationID</code></li>
+</ul><p>See <a href="http://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx">MSDN</a> for a detailed description of the purpose of each of these keys.</p>
       </section>
     </div>
 
