@@ -88,6 +88,31 @@ The task uses [SqlConnectionStringBuilder](http://msdn.microsoft.com/en-us/libra
 
 See [MSDN](http://msdn.microsoft.com/en-us/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx) for a detailed description of the purpose of each of these keys.
 
+# Referencing the tasks from your MSBuild script
+To use the tasks below, you will need to include a reference to the SqlMsBuildTasks.targets file in your MSBuild script:
+
+```xml
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="path\to\SqlMsBuildTasks.targets" />
+
+  <Target ...>
+    <SqlCreateDatabase ... />
+  </Target>
+</Project>
+```
+
+...alternatively, you can simply reference the individual tasks directly:
+
+```xml
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <UsingTask AssemblyFile="path\to\SqlMsBuildTasks.dll" TaskName="SqlMsBuildTasks.SqlCreateDatabase" />
+
+  <Target ...>
+    <SqlCreateDatabase ... />
+  </Target>
+</Project>
+```
+
 # Release History / Changelog
 1.0.0.0 - August 11 2012
 
