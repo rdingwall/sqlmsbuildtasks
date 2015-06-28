@@ -113,8 +113,3 @@ To use the tasks below, you will need to include a reference to the SqlMsBuildTa
   </Target>
 </Project>
 ```
-
-# Release History / Changelog
-1.0.0.0 - August 11 2012
-
-* Initial release on NuGet.
