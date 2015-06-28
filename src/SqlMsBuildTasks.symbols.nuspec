@@ -17,6 +17,6 @@
     <file src="SqlMsBuildTasks\bin\Release\SqlMsBuildTasks.pdb" target="tools\SqlMsBuildTasks.pdb" />
     <file src="SqlMsBuildTasks\bin\Release\SqlMsBuildTasks.xml" target="tools\SqlMsBuildTasks.xml" />
     <file src="SqlMsBuildTasks\bin\Release\SqlMsBuildTasks.targets" target="tools\SqlMsBuildTasks.targets" />
-    <file src="SqlMsBuildTasks.Data\**\*.cs" target="src" />
+    <file src="SqlMsBuildTasks\**\*.cs" target="src" />
   </files>
 </package>
