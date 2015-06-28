@@ -1,6 +1,7 @@
 SQL Server MS Build Tasks
 =========================
-[![NuGet version](https://img.shields.io/nuget/v/sqlmsbuildtasks.svg)](http://nuget.org/List/Packages/sqlmsbuildtasks)  [![NuGet downloads](https://img.shields.io/nuget/dt/sqlmsbuildtasks.svg)](http://nuget.org/List/Packages/sqlmsbuildtasks)
+[![NuGet version](https://img.shields.io/nuget/v/sqlmsbuildtasks.svg)](http://nuget.org/List/Packages/sqlmsbuildtasks)  [![NuGet downloads](https://img.shields.io/nuget/dt/sqlmsbuildtasks.svg)](http://nuget.org/List/Packages/sqlmsbuildtasks) [![Build status](https://ci.appveyor.com/api/projects/status/lujaih1gwfwgasof?svg=true)](https://ci.appveyor.com/project/rdingwall/sqlmsbuildtasks)
+
 
 A couple of handy MSBuild tasks for Microsoft SQL Server scripting. Works with .NET 2.0+. Available under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
