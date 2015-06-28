@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>SqlMsBuildTasks</id>
+    <version>$version$</version>
+    <authors>Richard Dingwall</authors>
+    <owners>Richard Dingwall</owners>
+    <licenseUrl>https://raw.githubusercontent.com/rdingwall/sqlmsbuildtasks/master/license.txt</licenseUrl>
+    <projectUrl>http://rdingwall.github.io/sqlmsbuildtasks/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A couple of handy MSBuild tasks for Microsoft SQL Server scripting.</description>
+    <language>en-US</language>
+    <tags>MSBuild SQLServer Database SQL MSSQL</tags>
+  </metadata>
+  <files>
+    <file src="SqlMsBuildTasks\bin\Release\SqlMsBuildTasks.dll" target="tools\SqlMsBuildTasks.dll" />
+    <file src="SqlMsBuildTasks\bin\Release\SqlMsBuildTasks.targets" target="tools\SqlMsBuildTasks.targets" />
+  </files>
+</package>
