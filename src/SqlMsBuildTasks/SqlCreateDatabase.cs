@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#pragma warning disable 1591
+
 namespace SqlMsBuildTasks
 {
     using System;
@@ -79,3 +81,5 @@ namespace SqlMsBuildTasks
         }
     }
 }
+
+#pragma warning restore 1591
