@@ -2,7 +2,7 @@ SQL Server MS Build Tasks
 =========================
 [![NuGet version](https://img.shields.io/nuget/v/sqlmsbuildtasks.svg)](http://nuget.org/List/Packages/sqlmsbuildtasks)  [![NuGet downloads](https://img.shields.io/nuget/dt/sqlmsbuildtasks.svg)](http://nuget.org/List/Packages/sqlmsbuildtasks)
 
-A couple of handy MSBuild tasks for SQL Server scripting. Works with .NET 2.0+. Available under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+A couple of handy MSBuild tasks for Microsoft SQL Server scripting. Works with .NET 2.0+. Available under the [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
 ### [>>> Get SqlMsBuildTasks via NuGet](http://nuget.org/List/Packages/sqlmsbuildtasks)
 
@@ -11,7 +11,7 @@ The latest SqlMsBuildTasks is **now available in NuGet [here](http://nuget.org/L
 Contributions and new ideas are welcome!
 
 ## SqlDropDatabase
-MSBuild task to drop a SQL Server database.
+MSBuild task to drop a Microsoft SQL Server database.
 
 #### Usage Example:
 To drop the *AdventureWorks* database in a local SQL Server Express instance (using Windows Authentication):
@@ -25,7 +25,7 @@ To drop the *AdventureWorks* database in a local SQL Server Express instance (us
 * ``ConnectionString``: the connection string to use. Note any InitialCatalog will be ignored -- this task always uses the ``master`` database.
 
 ## SqlCreateDatabase
-MSBuild task to create a SQL Server database.
+MSBuild task to create a Microsoft SQL Server database.
 
 #### Usage Example:
 To create an empty database called *AdventureWorks* in the local SQL Server Express instance (using Windows Authentication):
